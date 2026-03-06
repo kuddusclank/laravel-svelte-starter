@@ -23,22 +23,38 @@ class SocialAuthController extends Controller
     {
         abort_unless(in_array($provider, $this->providers), 404);
 
-        $socialUser = Socialite::driver($this->driver($provider))->user();
+        try {
+            $socialUser = Socialite::driver($this->driver($provider))->user();
+        } catch (\Exception $e) {
+            return redirect('/login')->with('error', 'Authentication failed. Please try again.');
+        }
 
-        abort_unless($socialUser->getEmail(), 400, 'Email address is required.');
+        if (! $socialUser->getEmail()) {
+            return redirect('/login')->with('error', 'An email address is required to sign in.');
+        }
 
+        // Look up by provider + provider_id first (returning user via this provider)
         $user = User::where('provider', $provider)
             ->where('provider_id', $socialUser->getId())
             ->first();
 
         if (! $user) {
-            $user = User::where('email', $socialUser->getEmail())->first();
+            $existing = User::where('email', $socialUser->getEmail())->first();
 
-            if ($user) {
-                $user->update([
+            if ($existing) {
+                // Only link if the existing account has no other provider attached.
+                // This prevents an attacker from hijacking an account by creating
+                // a social account with the victim's email.
+                if ($existing->provider) {
+                    return redirect('/login')->with('error', 'This email is already linked to another sign-in method.');
+                }
+
+                $existing->update([
                     'provider' => $provider,
                     'provider_id' => $socialUser->getId(),
                 ]);
+
+                $user = $existing;
             } else {
                 $user = User::create([
                     'name' => $socialUser->getName() ?? $socialUser->getNickname() ?? 'User',
