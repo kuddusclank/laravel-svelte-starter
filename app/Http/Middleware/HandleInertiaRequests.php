@@ -28,6 +28,10 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'socialProviders' => array_values(array_filter(
+                ['github', 'facebook', 'x', 'google', 'apple'],
+                fn (string $provider) => ! empty(env(strtoupper($provider === 'x' ? 'X' : $provider).'_CLIENT_ID')),
+            )),
         ];
     }
 }

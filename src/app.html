@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="cerberus">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+        %sveltekit.head%
+        <script>
+            (function () {
+                const appearance =
+                    document.cookie.match(/appearance=(\w+)/)?.[1] ?? 'system';
+                function applyTheme(mode) {
+                    if (
+                        mode === 'dark' ||
+                        (mode === 'system' &&
+                            window.matchMedia('(prefers-color-scheme: dark)')
+                                .matches)
+                    ) {
+                        document.documentElement.setAttribute(
+                            'data-mode',
+                            'dark',
+                        );
+                    } else {
+                        document.documentElement.removeAttribute('data-mode');
+                    }
+                }
+                applyTheme(appearance);
+                if (appearance === 'system') {
+                    window
+                        .matchMedia('(prefers-color-scheme: dark)')
+                        .addEventListener('change', function () {
+                            applyTheme('system');
+                        });
+                }
+            })();
+        </script>
+    </head>
+    <body class="bg-surface-50-950 font-sans antialiased" data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
+</html>

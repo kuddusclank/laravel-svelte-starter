@@ -1,24 +1,10 @@
 {
+    "extends": "./.svelte-kit/tsconfig.json",
     "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "bundler",
         "strict": true,
-        "jsx": "preserve",
         "skipLibCheck": true,
-        "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "verbatimModuleSyntax": true,
-        "noEmit": true,
-        "paths": {
-            "@/*": ["./resources/js/*"],
-            "ziggy-js": ["./vendor/tightenco/ziggy"]
-        }
-    },
-    "include": [
-        "resources/js/**/*.ts",
-        "resources/js/**/*.svelte"
-    ]
+        "verbatimModuleSyntax": true
+    }
 }
