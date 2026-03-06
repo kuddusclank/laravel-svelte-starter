@@ -125,10 +125,12 @@ class SetupCommand extends Command
         // Write SSO credentials to .env
         if (! empty($credentials)) {
             $env = new EnvFileEditor;
+            $appUrl = $env->get('APP_URL', 'http://localhost');
 
             foreach ($credentials as $slug => $cred) {
                 $env->set("{$cred['prefix']}_CLIENT_ID", $cred['client_id']);
                 $env->set("{$cred['prefix']}_CLIENT_SECRET", $cred['client_secret']);
+                $env->set("{$cred['prefix']}_REDIRECT_URI", "{$appUrl}/auth/{$slug}/callback");
             }
 
             $env->save();
