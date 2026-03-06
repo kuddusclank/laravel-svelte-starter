@@ -385,6 +385,16 @@ PHP;
             File::deleteDirectory("{$base}/app/Http/Controllers/Api");
             info('Api controller directory removed');
         }
+
+        // Remove API route reference from bootstrap/app.php
+        $appFile = "{$base}/bootstrap/app.php";
+        $contents = file_get_contents($appFile);
+        $contents = str_replace(
+            "        web: __DIR__.'/../routes/web.php',\n        api: __DIR__.'/../routes/api.php',",
+            "        web: __DIR__.'/../routes/web.php',",
+            $contents,
+        );
+        file_put_contents($appFile, $contents);
     }
 
     protected function copyDirectory(string $source, string $destination): void
