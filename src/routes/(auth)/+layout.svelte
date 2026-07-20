@@ -5,7 +5,7 @@
     let { children }: { children: Snippet } = $props();
 </script>
 
-<div class="bg-surface-50-950 relative flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="bg-background relative flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
     <div class="auth-gradient pointer-events-none absolute inset-0"></div>
 
     <div class="relative w-full max-w-md">

@@ -12,8 +12,8 @@
 
 <div class="space-y-6">
     <div class="text-center">
-        <h1 class="h3 font-bold">Reset password</h1>
-        <p class="text-surface-500 mt-1 text-sm">Enter your new password</p>
+        <h1 class="text-foreground text-2xl font-bold tracking-tight">Reset password</h1>
+        <p class="text-muted-foreground mt-1.5 text-sm">Enter your new password</p>
     </div>
 
     <form
@@ -30,18 +30,25 @@
         <input type="hidden" name="token" value={data.token} />
 
         <div>
-            <label for="email" class="label text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" value={form?.email ?? data.email} class="input mt-1" required />
+            <label for="email" class="text-foreground text-sm leading-none font-medium">Email</label>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                value={form?.email ?? data.email}
+                class="border-border bg-background placeholder:text-muted-foreground focus-visible:ring-ring mt-1.5 flex h-9 w-full rounded-md border px-3 py-1.5 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                required
+            />
             <InputError message={form?.errors?.email} />
         </div>
 
         <div>
-            <label for="password" class="label text-sm font-medium">Password</label>
+            <label for="password" class="text-foreground text-sm leading-none font-medium">Password</label>
             <input
                 id="password"
                 name="password"
                 type="password"
-                class="input mt-1"
+                class="border-border bg-background placeholder:text-muted-foreground focus-visible:ring-ring mt-1.5 flex h-9 w-full rounded-md border px-3 py-1.5 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 placeholder="New password"
                 required
                 autofocus
@@ -50,12 +57,14 @@
         </div>
 
         <div>
-            <label for="password_confirmation" class="label text-sm font-medium">Confirm Password</label>
+            <label for="password_confirmation" class="text-foreground text-sm leading-none font-medium"
+                >Confirm Password</label
+            >
             <input
                 id="password_confirmation"
                 name="password_confirmation"
                 type="password"
-                class="input mt-1"
+                class="border-border bg-background placeholder:text-muted-foreground focus-visible:ring-ring mt-1.5 flex h-9 w-full rounded-md border px-3 py-1.5 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 placeholder="Confirm new password"
                 required
             />
@@ -64,7 +73,7 @@
 
         <button
             type="submit"
-            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex h-9 w-full cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
             disabled={processing}
         >
             {processing ? 'Resetting...' : 'Reset password'}

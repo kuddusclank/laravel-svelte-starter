@@ -13,12 +13,14 @@
 
 <div class="space-y-6">
     <div class="text-center">
-        <h1 class="h3 font-bold">Forgot password?</h1>
-        <p class="text-surface-500 mt-1 text-sm">Enter your email and we'll send you a reset link</p>
+        <h1 class="text-foreground text-2xl font-bold tracking-tight">Forgot password?</h1>
+        <p class="text-muted-foreground mt-1.5 text-sm">Enter your email and we'll send you a reset link</p>
     </div>
 
     {#if form?.status}
-        <div class="preset-filled-success-500 rounded-lg p-3 text-center text-sm">{form.status}</div>
+        <div class="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3 text-center text-sm text-emerald-500">
+            {form.status}
+        </div>
     {/if}
 
     <form
@@ -33,13 +35,13 @@
         class="space-y-4"
     >
         <div>
-            <label for="email" class="label text-sm font-medium">Email</label>
+            <label for="email" class="text-foreground text-sm leading-none font-medium">Email</label>
             <input
                 id="email"
                 name="email"
                 type="email"
                 value={form?.email ?? ''}
-                class="input mt-1"
+                class="border-border bg-background placeholder:text-muted-foreground focus-visible:ring-ring mt-1.5 flex h-9 w-full rounded-md border px-3 py-1.5 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 placeholder="email@example.com"
                 required
                 autofocus
@@ -49,13 +51,13 @@
 
         <button
             type="submit"
-            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex h-9 w-full cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
             disabled={processing}
         >
             {processing ? 'Sending...' : 'Send reset link'}
         </button>
 
-        <p class="text-surface-500 text-center text-sm">
+        <p class="text-muted-foreground mt-4 text-center text-sm">
             <TextLink href="/login">Back to login</TextLink>
         </p>
     </form>
