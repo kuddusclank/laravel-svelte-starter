@@ -31,10 +31,8 @@
 
 <div class="flex min-h-screen">
     {#if sidebarOpen}
-        <aside
-            class="bg-surface-100-900 border-surface-200/60 dark:border-surface-800/60 flex w-64 shrink-0 flex-col border-r"
-        >
-            <div class="border-surface-200/60 dark:border-surface-800/60 flex h-16 items-center border-b px-4">
+        <aside class="bg-card text-card-foreground border-border flex w-64 shrink-0 flex-col border-r">
+            <div class="border-border flex h-16 items-center border-b px-4">
                 <a href="/dashboard">
                     <AppLogo />
                 </a>
@@ -43,7 +41,7 @@
                 <NavMain items={mainNavItems} />
             </nav>
             <NavFooter />
-            <div class="border-surface-200/60 dark:border-surface-800/60 border-t p-3">
+            <div class="border-border border-t p-3">
                 <NavUser />
             </div>
         </aside>

@@ -14,8 +14,8 @@
             <a
                 href={item.href}
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors {active
-                    ? 'preset-filled-primary-500'
-                    : 'text-surface-600 dark:text-surface-400 hover:bg-surface-200-800'}"
+                    ? 'bg-primary text-primary-foreground shadow-xs'
+                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}"
             >
                 {#if item.icon}
                     <item.icon class="size-5" />

@@ -14,10 +14,12 @@
     } = $props();
 </script>
 
-<header
-    class="bg-surface-50-950 border-surface-200/60 dark:border-surface-800/60 flex h-16 items-center gap-4 border-b px-6"
->
-    <button onclick={onToggleSidebar} class="preset-tonal rounded-token p-1.5" aria-label="Toggle sidebar">
+<header class="bg-card text-card-foreground border-border flex h-16 items-center gap-4 border-b px-6">
+    <button
+        onclick={onToggleSidebar}
+        class="border-border bg-background hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-lg border p-1.5 transition-colors"
+        aria-label="Toggle sidebar"
+    >
         {#if sidebarOpen}
             <PanelLeftClose class="size-5" />
         {:else}
