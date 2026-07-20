@@ -14,6 +14,12 @@ composer dev
 
 The CLI scaffolds the project, installs dependencies, and launches an interactive setup wizard that configures everything.
 
+> [!IMPORTANT]  
+> **SvelteKit Split Port Note:**
+> When using SvelteKit mode, SvelteKit runs on its own frontend server (typically `http://localhost:5173`). Laravel runs on `http://127.0.0.1:8000` strictly as a headless API backend.
+>
+> If you visit `http://127.0.0.1:8000` directly, you will get a **404 Not Found** response from Laravel. Always open the **SvelteKit URL** printed in your terminal (typically `http://localhost:5173` or `http://localhost:5174` if port 5173 is in use) to access your application.
+
 ### Prerequisites
 
 - PHP 8.2+
