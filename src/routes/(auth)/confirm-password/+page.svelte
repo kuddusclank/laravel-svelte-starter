@@ -18,20 +18,36 @@
         </p>
     </div>
 
-    <form method="POST" use:enhance={() => {
-        processing = true;
-        return async ({ update }) => {
-            processing = false;
-            await update();
-        };
-    }} class="space-y-4">
+    <form
+        method="POST"
+        use:enhance={() => {
+            processing = true;
+            return async ({ update }) => {
+                processing = false;
+                await update();
+            };
+        }}
+        class="space-y-4"
+    >
         <div>
             <label for="password" class="label text-sm font-medium">Password</label>
-            <input id="password" name="password" type="password" class="input mt-1" placeholder="Password" required autofocus />
+            <input
+                id="password"
+                name="password"
+                type="password"
+                class="input mt-1"
+                placeholder="Password"
+                required
+                autofocus
+            />
             <InputError message={form?.errors?.password} />
         </div>
 
-        <button type="submit" class="preset-filled-primary-500 btn w-full shadow-lg shadow-primary-500/20" disabled={processing}>
+        <button
+            type="submit"
+            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            disabled={processing}
+        >
             Confirm
         </button>
     </form>

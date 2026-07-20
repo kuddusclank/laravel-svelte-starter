@@ -21,20 +21,37 @@
         <div class="preset-filled-success-500 rounded-lg p-3 text-center text-sm">{form.status}</div>
     {/if}
 
-    <form method="POST" use:enhance={() => {
-        processing = true;
-        return async ({ update }) => {
-            processing = false;
-            await update();
-        };
-    }} class="space-y-4">
+    <form
+        method="POST"
+        use:enhance={() => {
+            processing = true;
+            return async ({ update }) => {
+                processing = false;
+                await update();
+            };
+        }}
+        class="space-y-4"
+    >
         <div>
             <label for="email" class="label text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" value={form?.email ?? ''} class="input mt-1" placeholder="email@example.com" required autofocus />
+            <input
+                id="email"
+                name="email"
+                type="email"
+                value={form?.email ?? ''}
+                class="input mt-1"
+                placeholder="email@example.com"
+                required
+                autofocus
+            />
             <InputError message={form?.errors?.email} />
         </div>
 
-        <button type="submit" class="preset-filled-primary-500 btn w-full shadow-lg shadow-primary-500/20" disabled={processing}>
+        <button
+            type="submit"
+            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            disabled={processing}
+        >
             {processing ? 'Sending...' : 'Send reset link'}
         </button>
 

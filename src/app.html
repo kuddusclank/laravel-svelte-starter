@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="cerberus">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,30 +8,22 @@
         %sveltekit.head%
         <script>
             (function () {
-                const appearance =
-                    document.cookie.match(/appearance=(\w+)/)?.[1] ?? 'system';
+                const appearance = document.cookie.match(/appearance=(\w+)/)?.[1] ?? 'system';
                 function applyTheme(mode) {
                     if (
                         mode === 'dark' ||
-                        (mode === 'system' &&
-                            window.matchMedia('(prefers-color-scheme: dark)')
-                                .matches)
+                        (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
                     ) {
-                        document.documentElement.setAttribute(
-                            'data-mode',
-                            'dark',
-                        );
+                        document.documentElement.setAttribute('data-mode', 'dark');
                     } else {
                         document.documentElement.removeAttribute('data-mode');
                     }
                 }
                 applyTheme(appearance);
                 if (appearance === 'system') {
-                    window
-                        .matchMedia('(prefers-color-scheme: dark)')
-                        .addEventListener('change', function () {
-                            applyTheme('system');
-                        });
+                    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+                        applyTheme('system');
+                    });
                 }
             })();
         </script>

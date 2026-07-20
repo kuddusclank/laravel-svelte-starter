@@ -11,7 +11,7 @@
             {getInitials(user.name)}
         </div>
         <div class="truncate">
-            <p class="text-sm font-medium truncate">{user.name}</p>
+            <p class="truncate text-sm font-medium">{user.name}</p>
             <p class="text-surface-500 truncate text-xs">{user.email}</p>
         </div>
     </div>

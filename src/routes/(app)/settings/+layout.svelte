@@ -19,7 +19,7 @@
 <div class="space-y-6">
     <Heading title="Settings" description="Manage your profile and account settings." />
 
-    <nav class="flex gap-1 border-b border-surface-200/60 dark:border-surface-800/60 pb-3">
+    <nav class="border-surface-200/60 dark:border-surface-800/60 flex gap-1 border-b pb-3">
         {#each tabs as tab}
             {@const active = currentPath === tab.href}
             <a

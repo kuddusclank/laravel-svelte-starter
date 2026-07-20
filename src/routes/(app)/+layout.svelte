@@ -11,9 +11,7 @@
 
     let { children }: { children: Snippet } = $props();
 
-    const mainNavItems: NavItem[] = [
-        { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    ];
+    const mainNavItems: NavItem[] = [{ title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard }];
 
     let sidebarOpen = $state(true);
 
@@ -33,7 +31,9 @@
 
 <div class="flex min-h-screen">
     {#if sidebarOpen}
-        <aside class="bg-surface-100-900 border-surface-200/60 dark:border-surface-800/60 flex w-64 shrink-0 flex-col border-r">
+        <aside
+            class="bg-surface-100-900 border-surface-200/60 dark:border-surface-800/60 flex w-64 shrink-0 flex-col border-r"
+        >
             <div class="border-surface-200/60 dark:border-surface-800/60 flex h-16 items-center border-b px-4">
                 <a href="/dashboard">
                     <AppLogo />

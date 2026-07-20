@@ -1,7 +1,12 @@
 <script lang="ts">
     import InputError from './InputError.svelte';
 
-    let { open = false, qrSvg = '', secretKey = '', onClose }: {
+    let {
+        open = false,
+        qrSvg = '',
+        secretKey = '',
+        onClose,
+    }: {
         open?: boolean;
         qrSvg?: string;
         secretKey?: string;
@@ -37,9 +42,17 @@
 
 {#if open}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm" onclick={onClose} onkeydown={() => {}}>
+    <div
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+        onclick={onClose}
+        onkeydown={() => {}}
+    >
         <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div class="bg-surface-50 dark:bg-surface-900 w-full max-w-md rounded-2xl border border-surface-200/60 dark:border-surface-800/60 p-6 shadow-2xl" onclick={(e) => e.stopPropagation()} onkeydown={() => {}}>
+        <div
+            class="bg-surface-50 dark:bg-surface-900 border-surface-200/60 dark:border-surface-800/60 w-full max-w-md rounded-2xl border p-6 shadow-2xl"
+            onclick={(e) => e.stopPropagation()}
+            onkeydown={() => {}}
+        >
             <h3 class="h4 font-bold">Set Up Two-Factor Authentication</h3>
             <p class="text-surface-500 mt-2 text-sm">
                 Scan the QR code below with your authenticator app, then enter the verification code.
@@ -74,7 +87,11 @@
 
                 <div class="flex justify-end gap-3">
                     <button type="button" class="preset-tonal btn" onclick={onClose}>Cancel</button>
-                    <button class="preset-filled-primary-500 btn" onclick={confirm} disabled={confirming || code.length < 6}>
+                    <button
+                        class="preset-filled-primary-500 btn"
+                        onclick={confirm}
+                        disabled={confirming || code.length < 6}
+                    >
                         Confirm
                     </button>
                 </div>

@@ -18,22 +18,43 @@
         <p class="text-surface-500 mt-1 text-sm">Enter your details to get started</p>
     </div>
 
-    <form method="POST" use:enhance={() => {
-        processing = true;
-        return async ({ update }) => {
-            processing = false;
-            await update();
-        };
-    }} class="space-y-4">
+    <form
+        method="POST"
+        use:enhance={() => {
+            processing = true;
+            return async ({ update }) => {
+                processing = false;
+                await update();
+            };
+        }}
+        class="space-y-4"
+    >
         <div>
             <label for="name" class="label text-sm font-medium">Name</label>
-            <input id="name" name="name" type="text" value={form?.name ?? ''} class="input mt-1" placeholder="Full name" required autofocus />
+            <input
+                id="name"
+                name="name"
+                type="text"
+                value={form?.name ?? ''}
+                class="input mt-1"
+                placeholder="Full name"
+                required
+                autofocus
+            />
             <InputError message={form?.errors?.name} />
         </div>
 
         <div>
             <label for="email" class="label text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" value={form?.email ?? ''} class="input mt-1" placeholder="email@example.com" required />
+            <input
+                id="email"
+                name="email"
+                type="email"
+                value={form?.email ?? ''}
+                class="input mt-1"
+                placeholder="email@example.com"
+                required
+            />
             <InputError message={form?.errors?.email} />
         </div>
 
@@ -45,11 +66,22 @@
 
         <div>
             <label for="password_confirmation" class="label text-sm font-medium">Confirm Password</label>
-            <input id="password_confirmation" name="password_confirmation" type="password" class="input mt-1" placeholder="Confirm password" required />
+            <input
+                id="password_confirmation"
+                name="password_confirmation"
+                type="password"
+                class="input mt-1"
+                placeholder="Confirm password"
+                required
+            />
             <InputError message={form?.errors?.password_confirmation} />
         </div>
 
-        <button type="submit" class="preset-filled-primary-500 btn w-full shadow-lg shadow-primary-500/20" disabled={processing}>
+        <button
+            type="submit"
+            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            disabled={processing}
+        >
             {processing ? 'Creating account...' : 'Create account'}
         </button>
 

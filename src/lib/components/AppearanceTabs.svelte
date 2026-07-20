@@ -4,9 +4,8 @@
     import { Sun, Moon, Monitor } from 'lucide-svelte';
 
     const state = createAppearanceState(
-        (typeof document !== 'undefined'
-            ? document.cookie.match(/appearance=(\w+)/)?.[1]
-            : 'system') as Appearance ?? 'system'
+        ((typeof document !== 'undefined' ? document.cookie.match(/appearance=(\w+)/)?.[1] : 'system') as Appearance) ??
+            'system',
     );
 
     const options: { value: Appearance; label: string; icon: typeof Sun }[] = [
@@ -16,11 +15,12 @@
     ];
 </script>
 
-<div class="inline-flex gap-1 rounded-lg bg-surface-200/50 dark:bg-surface-800/50 p-1">
+<div class="bg-surface-200/50 dark:bg-surface-800/50 inline-flex gap-1 rounded-lg p-1">
     {#each options as option}
         <button
             onclick={() => state.update(option.value)}
-            class="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors {state.appearance === option.value
+            class="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors {state.appearance ===
+            option.value
                 ? 'bg-surface-50 dark:bg-surface-900 shadow-sm'
                 : 'text-surface-500 hover:text-surface-700 dark:hover:text-surface-300'}"
         >

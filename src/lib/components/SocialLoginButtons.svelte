@@ -35,15 +35,18 @@
 
 {#if providers.length > 0}
     <div class="my-6 flex items-center gap-3">
-        <div class="h-px flex-1 bg-surface-200/60 dark:bg-surface-700/60"></div>
-        <span class="text-surface-400 text-xs font-medium uppercase tracking-wider">or continue with</span>
-        <div class="h-px flex-1 bg-surface-200/60 dark:bg-surface-700/60"></div>
+        <div class="bg-surface-200/60 dark:bg-surface-700/60 h-px flex-1"></div>
+        <span class="text-surface-400 text-xs font-medium tracking-wider uppercase">or continue with</span>
+        <div class="bg-surface-200/60 dark:bg-surface-700/60 h-px flex-1"></div>
     </div>
 
     <div class="flex flex-col gap-2">
         {#each providers as provider}
             {@const icon = icons[provider]}
-            <a href="/auth/{provider}/redirect" class="preset-tonal btn w-full gap-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+            <a
+                href="/auth/{provider}/redirect"
+                class="preset-tonal btn w-full gap-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
                 <svg class="size-5" viewBox={icon.viewBox} fill="currentColor" aria-hidden="true">
                     <path d={icon.path} />
                 </svg>

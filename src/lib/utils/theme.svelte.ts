@@ -43,7 +43,9 @@ export function createAppearanceState(initial: Appearance = 'system') {
     }
 
     return {
-        get appearance() { return appearance; },
+        get appearance() {
+            return appearance;
+        },
         update,
     };
 }

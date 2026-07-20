@@ -43,35 +43,31 @@
     </header>
 
     {#if data.twoFactorEnabled && data.twoFactorConfirmed}
-        <div class="preset-filled-success-500 rounded-lg p-3 text-sm">
-            Two-factor authentication is enabled.
-        </div>
+        <div class="preset-filled-success-500 rounded-lg p-3 text-sm">Two-factor authentication is enabled.</div>
 
         <div class="flex flex-wrap gap-3">
             {#if !showCodes}
                 <form method="POST" action="?/showRecoveryCodes" use:enhance>
-                    <button type="submit" class="preset-tonal btn">
-                        Show Recovery Codes
-                    </button>
+                    <button type="submit" class="preset-tonal btn"> Show Recovery Codes </button>
                 </form>
             {:else}
                 <form method="POST" action="?/regenerateRecoveryCodes" use:enhance>
-                    <button type="submit" class="preset-tonal btn">
-                        Regenerate Recovery Codes
-                    </button>
+                    <button type="submit" class="preset-tonal btn"> Regenerate Recovery Codes </button>
                 </form>
             {/if}
-            <form method="POST" action="?/disable" use:enhance={() => {
-                return async ({ update }) => {
-                    recoveryCodes = [];
-                    showCodes = false;
-                    await update();
-                    await invalidateAll();
-                };
-            }}>
-                <button type="submit" class="preset-filled-error-500 btn">
-                    Disable
-                </button>
+            <form
+                method="POST"
+                action="?/disable"
+                use:enhance={() => {
+                    return async ({ update }) => {
+                        recoveryCodes = [];
+                        showCodes = false;
+                        await update();
+                        await invalidateAll();
+                    };
+                }}
+            >
+                <button type="submit" class="preset-filled-error-500 btn"> Disable </button>
             </form>
         </div>
 
@@ -82,25 +78,31 @@
         <div class="preset-filled-warning-500 rounded-lg p-3 text-sm">
             Two-factor authentication is enabled but not yet confirmed. Please complete setup.
         </div>
-        <form method="POST" action="?/enable" use:enhance={() => {
-            enabling = true;
-            return async ({ update }) => {
-                enabling = false;
-                await update();
-            };
-        }}>
-            <button type="submit" class="preset-filled-primary-500 btn" disabled={enabling}>
-                Complete Setup
-            </button>
+        <form
+            method="POST"
+            action="?/enable"
+            use:enhance={() => {
+                enabling = true;
+                return async ({ update }) => {
+                    enabling = false;
+                    await update();
+                };
+            }}
+        >
+            <button type="submit" class="preset-filled-primary-500 btn" disabled={enabling}> Complete Setup </button>
         </form>
     {:else}
-        <form method="POST" action="?/enable" use:enhance={() => {
-            enabling = true;
-            return async ({ update }) => {
-                enabling = false;
-                await update();
-            };
-        }}>
+        <form
+            method="POST"
+            action="?/enable"
+            use:enhance={() => {
+                enabling = true;
+                return async ({ update }) => {
+                    enabling = false;
+                    await update();
+                };
+            }}
+        >
             <button type="submit" class="preset-filled-primary-500 btn" disabled={enabling}>
                 {enabling ? 'Enabling...' : 'Enable Two-Factor Authentication'}
             </button>

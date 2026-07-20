@@ -18,16 +18,29 @@
         <p class="text-surface-500 mt-1 text-sm">Enter your email and password to continue</p>
     </div>
 
-    <form method="POST" use:enhance={() => {
-        processing = true;
-        return async ({ update }) => {
-            processing = false;
-            await update();
-        };
-    }} class="space-y-4">
+    <form
+        method="POST"
+        use:enhance={() => {
+            processing = true;
+            return async ({ update }) => {
+                processing = false;
+                await update();
+            };
+        }}
+        class="space-y-4"
+    >
         <div>
             <label for="email" class="label text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" value={form?.email ?? ''} class="input mt-1" placeholder="email@example.com" required autofocus />
+            <input
+                id="email"
+                name="email"
+                type="email"
+                value={form?.email ?? ''}
+                class="input mt-1"
+                placeholder="email@example.com"
+                required
+                autofocus
+            />
             <InputError message={form?.errors?.email} />
         </div>
 
@@ -45,7 +58,11 @@
             <span class="text-sm">Remember me</span>
         </label>
 
-        <button type="submit" class="preset-filled-primary-500 btn w-full shadow-lg shadow-primary-500/20" disabled={processing}>
+        <button
+            type="submit"
+            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            disabled={processing}
+        >
             {processing ? 'Logging in...' : 'Log in'}
         </button>
 

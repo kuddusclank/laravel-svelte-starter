@@ -24,7 +24,7 @@
     .auth-gradient {
         background:
             radial-gradient(ellipse 80% 50% at 15% -10%, rgba(168, 85, 247, 0.12) 0%, transparent 70%),
-            radial-gradient(ellipse 60% 40% at 85% 0%, rgba(251, 191, 36, 0.10) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 40% at 85% 0%, rgba(251, 191, 36, 0.1) 0%, transparent 70%),
             radial-gradient(ellipse 40% 30% at 50% 100%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
     }
 
@@ -38,7 +38,7 @@
             0 0 0 1px rgba(0, 0, 0, 0.02);
     }
 
-    :global([data-mode="dark"]) .auth-card {
+    :global([data-mode='dark']) .auth-card {
         background: rgba(15, 15, 25, 0.75);
         border-color: rgba(255, 255, 255, 0.06);
         box-shadow:

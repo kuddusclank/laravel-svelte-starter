@@ -8,12 +8,6 @@ export default [
         },
     },
     {
-        ignores: [
-            'vendor/**',
-            'node_modules/**',
-            'public/**',
-            'bootstrap/ssr/**',
-            'storage/**',
-        ],
+        ignores: ['vendor/**', 'node_modules/**', 'public/**', 'bootstrap/ssr/**', 'storage/**'],
     },
 ];

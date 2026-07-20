@@ -24,14 +24,22 @@
     {/if}
 
     <div class="flex items-center justify-between">
-        <form method="POST" action="?/resend" use:enhance={() => {
-            processing = true;
-            return async ({ update }) => {
-                processing = false;
-                await update();
-            };
-        }}>
-            <button type="submit" class="preset-filled-primary-500 btn shadow-lg shadow-primary-500/20" disabled={processing}>
+        <form
+            method="POST"
+            action="?/resend"
+            use:enhance={() => {
+                processing = true;
+                return async ({ update }) => {
+                    processing = false;
+                    await update();
+                };
+            }}
+        >
+            <button
+                type="submit"
+                class="preset-filled-primary-500 btn shadow-primary-500/20 shadow-lg"
+                disabled={processing}
+            >
                 Resend verification email
             </button>
         </form>

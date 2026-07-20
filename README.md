@@ -56,13 +56,13 @@ The CLI scaffolds the project, installs dependencies, and launches an interactiv
 
 Five OAuth providers supported out of the box:
 
-| Provider | Env Prefix | Callback URL |
-|----------|------------|--------------|
-| GitHub | `GITHUB_` | `/auth/github/callback` |
-| Facebook | `FACEBOOK_` | `/auth/facebook/callback` |
-| X (Twitter) | `X_` | `/auth/x/callback` |
-| Google | `GOOGLE_` | `/auth/google/callback` |
-| Apple | `APPLE_` | `/auth/apple/callback` |
+| Provider    | Env Prefix  | Callback URL              |
+| ----------- | ----------- | ------------------------- |
+| GitHub      | `GITHUB_`   | `/auth/github/callback`   |
+| Facebook    | `FACEBOOK_` | `/auth/facebook/callback` |
+| X (Twitter) | `X_`        | `/auth/x/callback`        |
+| Google      | `GOOGLE_`   | `/auth/google/callback`   |
+| Apple       | `APPLE_`    | `/auth/apple/callback`    |
 
 For each provider, the setup wizard writes three env vars to `.env`:
 
@@ -110,23 +110,23 @@ src/
 
 ### Core
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `APP_NAME` | Laravel | Application name |
-| `APP_URL` | http://localhost | Base URL (used for SSO callbacks) |
-| `APP_KEY` | — | Generated during setup |
-| `DB_CONNECTION` | sqlite | Database driver |
-| `LARAVEL_URL` | http://localhost:8000 | Laravel API URL for SvelteKit |
+| Variable        | Default               | Description                       |
+| --------------- | --------------------- | --------------------------------- |
+| `APP_NAME`      | Laravel               | Application name                  |
+| `APP_URL`       | http://localhost      | Base URL (used for SSO callbacks) |
+| `APP_KEY`       | —                     | Generated during setup            |
+| `DB_CONNECTION` | sqlite                | Database driver                   |
+| `LARAVEL_URL`   | http://localhost:8000 | Laravel API URL for SvelteKit     |
 
 ### SSO Providers
 
 Each provider uses three env vars:
 
-| Variable | Description |
-|----------|-------------|
-| `{PREFIX}_CLIENT_ID` | OAuth Client ID |
+| Variable                 | Description         |
+| ------------------------ | ------------------- |
+| `{PREFIX}_CLIENT_ID`     | OAuth Client ID     |
 | `{PREFIX}_CLIENT_SECRET` | OAuth Client Secret |
-| `{PREFIX}_REDIRECT_URI` | OAuth callback URL |
+| `{PREFIX}_REDIRECT_URI`  | OAuth callback URL  |
 
 Prefixes: `GITHUB`, `FACEBOOK`, `X`, `GOOGLE`, `APPLE`
 
@@ -134,29 +134,29 @@ Prefixes: `GITHUB`, `FACEBOOK`, `X`, `GOOGLE`, `APPLE`
 
 ### Composer
 
-| Command | Description |
-|---------|-------------|
-| `composer dev` | Start Laravel + SvelteKit dev servers concurrently |
-| `composer setup` | Re-run the interactive setup wizard |
+| Command          | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| `composer dev`   | Start Laravel + SvelteKit dev servers concurrently |
+| `composer setup` | Re-run the interactive setup wizard                |
 
 ### Artisan
 
-| Command | Description |
-|---------|-------------|
+| Command                 | Description              |
+| ----------------------- | ------------------------ |
 | `php artisan app:setup` | Interactive setup wizard |
-| `php artisan serve` | Start Laravel dev server |
-| `php artisan test` | Run PHPUnit tests |
+| `php artisan serve`     | Start Laravel dev server |
+| `php artisan test`      | Run PHPUnit tests        |
 
 ### npm
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start SvelteKit dev server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run lint` | ESLint with auto-fix |
-| `npm run format` | Prettier formatting |
-| `npm run types:check` | TypeScript type checking |
+| Command               | Description                |
+| --------------------- | -------------------------- |
+| `npm run dev`         | Start SvelteKit dev server |
+| `npm run build`       | Production build           |
+| `npm run preview`     | Preview production build   |
+| `npm run lint`        | ESLint with auto-fix       |
+| `npm run format`      | Prettier formatting        |
+| `npm run types:check` | TypeScript type checking   |
 
 ## Setting Up SSO Providers
 
@@ -192,20 +192,20 @@ Prefixes: `GITHUB`, `FACEBOOK`, `X`, `GOOGLE`, `APPLE`
 
 ## Tech Stack
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Backend | Laravel | 12.x |
-| Auth | Laravel Fortify | 1.x |
-| Social Auth | Laravel Socialite | 5.x |
-| Frontend | Svelte | 5.x |
-| Full-stack | SvelteKit | 2.x |
-| CSS | Tailwind CSS | 4.x |
-| UI Components | Skeleton UI | 4.x |
-| Icons | Lucide Svelte | — |
-| Build Tool | Vite | 6.x |
-| Language | TypeScript | 5.x |
-| Database | SQLite (default) | — |
-| Testing | PHPUnit | 11.x |
+| Layer         | Technology        | Version |
+| ------------- | ----------------- | ------- |
+| Backend       | Laravel           | 12.x    |
+| Auth          | Laravel Fortify   | 1.x     |
+| Social Auth   | Laravel Socialite | 5.x     |
+| Frontend      | Svelte            | 5.x     |
+| Full-stack    | SvelteKit         | 2.x     |
+| CSS           | Tailwind CSS      | 4.x     |
+| UI Components | Skeleton UI       | 4.x     |
+| Icons         | Lucide Svelte     | —       |
+| Build Tool    | Vite              | 6.x     |
+| Language      | TypeScript        | 5.x     |
+| Database      | SQLite (default)  | —       |
+| Testing       | PHPUnit           | 11.x    |
 
 ## Manual Installation
 

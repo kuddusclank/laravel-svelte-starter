@@ -27,28 +27,54 @@
         </p>
     </div>
 
-    <form method="POST" use:enhance={() => {
-        processing = true;
-        return async ({ update }) => {
-            processing = false;
-            await update();
-        };
-    }} class="space-y-4">
+    <form
+        method="POST"
+        use:enhance={() => {
+            processing = true;
+            return async ({ update }) => {
+                processing = false;
+                await update();
+            };
+        }}
+        class="space-y-4"
+    >
         {#if useRecovery}
             <div>
                 <label for="recovery_code" class="label text-sm font-medium">Recovery Code</label>
-                <input id="recovery_code" name="recovery_code" type="text" class="input mt-1" placeholder="Recovery code" required autofocus />
+                <input
+                    id="recovery_code"
+                    name="recovery_code"
+                    type="text"
+                    class="input mt-1"
+                    placeholder="Recovery code"
+                    required
+                    autofocus
+                />
                 <InputError message={form?.errors?.recovery_code} />
             </div>
         {:else}
             <div>
                 <label for="code" class="label text-sm font-medium">Code</label>
-                <input id="code" name="code" type="text" inputmode="numeric" class="input mt-1" placeholder="6-digit code" maxlength={6} required autofocus />
+                <input
+                    id="code"
+                    name="code"
+                    type="text"
+                    inputmode="numeric"
+                    class="input mt-1"
+                    placeholder="6-digit code"
+                    maxlength={6}
+                    required
+                    autofocus
+                />
                 <InputError message={form?.errors?.code} />
             </div>
         {/if}
 
-        <button type="submit" class="preset-filled-primary-500 btn w-full shadow-lg shadow-primary-500/20" disabled={processing}>
+        <button
+            type="submit"
+            class="preset-filled-primary-500 btn shadow-primary-500/20 w-full shadow-lg"
+            disabled={processing}
+        >
             {processing ? 'Verifying...' : 'Verify'}
         </button>
 
