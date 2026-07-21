@@ -7,8 +7,8 @@
 
 <section>
     <header>
-        <h3 class="h4 font-bold">Appearance</h3>
-        <p class="text-surface-500 mt-1 text-sm">Choose how the application looks for you.</p>
+        <h3 class="text-foreground text-lg font-semibold tracking-tight">Appearance</h3>
+        <p class="text-muted-foreground mt-1 text-sm">Choose how the application looks for you.</p>
     </header>
 
     <div class="mt-4">

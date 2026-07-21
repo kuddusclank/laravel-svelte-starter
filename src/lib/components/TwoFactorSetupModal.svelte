@@ -43,18 +43,18 @@
 {#if open}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs"
         onclick={onClose}
         onkeydown={() => {}}
     >
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
-            class="bg-surface-50 dark:bg-surface-900 border-surface-200/60 dark:border-surface-800/60 w-full max-w-md rounded-2xl border p-6 shadow-2xl"
+            class="bg-card border-border w-full max-w-md rounded-2xl border p-6 shadow-2xl"
             onclick={(e) => e.stopPropagation()}
             onkeydown={() => {}}
         >
-            <h3 class="h4 font-bold">Set Up Two-Factor Authentication</h3>
-            <p class="text-surface-500 mt-2 text-sm">
+            <h3 class="text-foreground text-lg font-semibold tracking-tight">Set Up Two-Factor Authentication</h3>
+            <p class="text-muted-foreground mt-2 text-sm">
                 Scan the QR code below with your authenticator app, then enter the verification code.
             </p>
 
@@ -65,20 +65,22 @@
             {/if}
 
             {#if secretKey}
-                <div class="bg-surface-100-900 mb-4 rounded-lg p-3 text-center">
-                    <p class="text-surface-500 text-xs">Manual entry key:</p>
-                    <p class="font-mono text-sm font-bold">{secretKey}</p>
+                <div class="bg-secondary mb-4 rounded-lg p-3 text-center">
+                    <p class="text-muted-foreground text-xs">Manual entry key:</p>
+                    <p class="text-foreground font-mono text-sm font-bold">{secretKey}</p>
                 </div>
             {/if}
 
             <div class="space-y-4">
                 <div>
-                    <label for="2fa-code" class="label text-sm font-medium">Verification Code</label>
+                    <label for="2fa-code" class="text-foreground text-sm leading-none font-medium"
+                        >Verification Code</label
+                    >
                     <input
                         id="2fa-code"
                         type="text"
                         bind:value={code}
-                        class="input mt-1"
+                        class="border-border bg-background placeholder:text-muted-foreground focus-visible:ring-ring mt-1.5 flex h-9 w-full rounded-md border px-3 py-1.5 text-sm shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                         placeholder="Enter 6-digit code"
                         maxlength={6}
                     />
@@ -86,9 +88,13 @@
                 </div>
 
                 <div class="flex justify-end gap-3">
-                    <button type="button" class="preset-tonal btn" onclick={onClose}>Cancel</button>
                     <button
-                        class="preset-filled-primary-500 btn"
+                        type="button"
+                        class="border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
+                        onclick={onClose}>Cancel</button
+                    >
+                    <button
+                        class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex h-9 cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                         onclick={confirm}
                         disabled={confirming || code.length < 6}
                     >

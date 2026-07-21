@@ -36,23 +36,35 @@
 
 <section class="space-y-6">
     <header>
-        <h3 class="h4 font-bold">Two-Factor Authentication</h3>
-        <p class="text-surface-500 mt-1 text-sm">
+        <h3 class="text-foreground text-lg font-semibold tracking-tight">Two-Factor Authentication</h3>
+        <p class="text-muted-foreground mt-1 text-sm">
             Add an extra layer of security to your account using two-factor authentication.
         </p>
     </header>
 
     {#if data.twoFactorEnabled && data.twoFactorConfirmed}
-        <div class="preset-filled-success-500 rounded-lg p-3 text-sm">Two-factor authentication is enabled.</div>
+        <div class="rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3 text-sm text-emerald-500">
+            Two-factor authentication is enabled.
+        </div>
 
         <div class="flex flex-wrap gap-3">
             {#if !showCodes}
                 <form method="POST" action="?/showRecoveryCodes" use:enhance>
-                    <button type="submit" class="preset-tonal btn"> Show Recovery Codes </button>
+                    <button
+                        type="submit"
+                        class="border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
+                    >
+                        Show Recovery Codes
+                    </button>
                 </form>
             {:else}
                 <form method="POST" action="?/regenerateRecoveryCodes" use:enhance>
-                    <button type="submit" class="preset-tonal btn"> Regenerate Recovery Codes </button>
+                    <button
+                        type="submit"
+                        class="border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground inline-flex h-9 cursor-pointer items-center justify-center rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
+                    >
+                        Regenerate Recovery Codes
+                    </button>
                 </form>
             {/if}
             <form
@@ -67,7 +79,12 @@
                     };
                 }}
             >
-                <button type="submit" class="preset-filled-error-500 btn"> Disable </button>
+                <button
+                    type="submit"
+                    class="bg-destructive text-destructive-foreground hover:bg-destructive/90 inline-flex h-9 cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs transition-colors"
+                >
+                    Disable
+                </button>
             </form>
         </div>
 
@@ -75,7 +92,7 @@
             <TwoFactorRecoveryCodes codes={recoveryCodes} />
         {/if}
     {:else if data.twoFactorEnabled && !data.twoFactorConfirmed}
-        <div class="preset-filled-warning-500 rounded-lg p-3 text-sm">
+        <div class="rounded-lg border border-amber-500/20 bg-amber-500/10 p-3 text-sm text-amber-500">
             Two-factor authentication is enabled but not yet confirmed. Please complete setup.
         </div>
         <form
@@ -89,7 +106,13 @@
                 };
             }}
         >
-            <button type="submit" class="preset-filled-primary-500 btn" disabled={enabling}> Complete Setup </button>
+            <button
+                type="submit"
+                class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex h-9 cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                disabled={enabling}
+            >
+                Complete Setup
+            </button>
         </form>
     {:else}
         <form
@@ -103,7 +126,11 @@
                 };
             }}
         >
-            <button type="submit" class="preset-filled-primary-500 btn" disabled={enabling}>
+            <button
+                type="submit"
+                class="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex h-9 cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-xs focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                disabled={enabling}
+            >
                 {enabling ? 'Enabling...' : 'Enable Two-Factor Authentication'}
             </button>
         </form>
